@@ -1,0 +1,5 @@
+# This .gitignore file should be placed at the root of your project directory
+#
+# Get latest from https://github.com/github/gitignore
+#
+./idea/
