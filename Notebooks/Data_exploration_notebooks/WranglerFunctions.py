@@ -11,6 +11,7 @@ def format_date(df, column_name, format_string):
 
 def Inflation_Wrangler(df):
     date_err = format_date(df, 'Date', '%d/%m/%Y')
+    df = df.iloc[::-1]
     return df, date_err
 
 def F3Metl_Comp_Wrangler(data):
