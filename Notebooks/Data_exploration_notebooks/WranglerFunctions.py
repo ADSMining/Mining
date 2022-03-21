@@ -9,9 +9,10 @@ def format_date(df, column_name, format_string):
             err += 1
     return err
 
-def Inflation_Wrangler(df):
+def Inflation_Unemployment_Wrangler(df):
     date_err = format_date(df, 'Date', '%d/%m/%Y')
     df = df.iloc[::-1]
+    df = df.reset_index(drop = True)
     return df, date_err
 
 def F3Metl_Comp_Wrangler(data):
