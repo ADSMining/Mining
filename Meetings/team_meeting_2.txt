@@ -1,0 +1,11 @@
+Work on visualisaton this week
+ - Compare earnings of different companies
+ - Look at the history of companies to see if there are any major events that affect them
+ - Look for correlations in the datasets and any other features that effect the raw earnings (EBITDA)
+ - Compare correlation of different datasets
+ - Think of other datasets that might be relevant
+Update notes document with anything relevant
+
+
+
+

@@ -1,0 +1,14 @@
+Look at more Bloomberg data if necessary. Might be worth going in an looking at the largest cost and largest revenues. Large companies need energy/oil so the energy/oil prices might affect it
+Plotly has ohlc library https://plotly.com/python/ohlc-charts/
+Some of the data given is useless. Comparing covariance is one way to check which data is important (like F3METL vs SPX500)
+Work out what components to put into the ML model. It is a Data Science unit not an ML unit so do not focus too much on this.
+News headlines of important events. Might be difficult without NLP knowledge. Maybe just mark interesting changes if they correlate with important events.
+Consider performing PCA.
+Objective is to write a common OHLC function for Bloomberg data that takes a .csv file and plots visualisations.
+Refer to https://arxiv.org/pdf/1912.09363.pdf. We could zoom in and zoom out graphs like on Page 22.
+Refer to https://arxiv.org/pdf/1704.04110.pdf for plotting time series data.
+We could leave missing data as NaN or fill it with 0. 
+We could pad data using Pandas.
+We can an ignore general earning index in F3METL
+
+Alex's office: Queen's Building 1.65
