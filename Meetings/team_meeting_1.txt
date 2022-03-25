@@ -1,0 +1,9 @@
+Go through each dataset and get started on the different steps (preparation, exploration, modelling, etc.)
+ - Srdjan - Economic_Events, Economic_Release
+ - Luke - Government, Inflation
+ - Aadith - F3METL_Comp, F3METL
+ - Malak - GUKG10, SPX500 
+ - Seth - BCOMIN, GBPUSD
+ - Seif - Unemployment
+
+Weekly meetings on Tuesday at 11:00 AM.
