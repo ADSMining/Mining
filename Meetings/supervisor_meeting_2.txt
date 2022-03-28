@@ -1,0 +1,8 @@
+The functions can be as general/abstract as we want them to be. It might be helpful to consider the pros and cons of the end result.
+Measures of centeral tendency might not be the best choice for time series data. Look into ARIMA.
+Interrogate the data that we have further.
+Use Bloomberg to find out what the companies spend the most money on.
+Compare major trends in the data to news headlines.
+Look into statsmodels.
+
+Book a meeting room in MVB for next week.

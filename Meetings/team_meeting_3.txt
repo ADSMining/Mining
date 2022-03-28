@@ -1,0 +1,9 @@
+Look for other factors that influence earnings of individual companies
+ - Srdjan - Trends in countries that the companies sell to
+ - Seth - Energy costs and resources
+ - Malak - Debts of companies
+ - Seif - Mineral revenues
+ - Luke - Key trends and headlines
+ - Aadith - Other costs 
+Use the Bloomberg terminal to obtain data
+Visualise the relationships
