@@ -1,0 +1,11 @@
+All currency values in GBP. Indicate if USD. 
+Make sure all equities are LN (except BHP AU).
+Look up the climate change data for different companies. Like emission data, for example.
+Colour in world map for geographic data.
+Break down operating costs.
+Compare prices of minerals with the sales of the companies.
+Start working on the ML models.
+Collect data on tariffs/taxes levied by the purchasing countries on sold goods.
+Collect data on shipping costs and minimum wages.
+
+Meet twice a week starting this week.
