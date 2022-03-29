@@ -1,0 +1,14 @@
+Build a model to show how these factors impact the earnings.
+State your hypothesis in the report.
+Decide what the most important piece of data is based on your results.
+Does one factor impact one company more than the others.
+Use PCA to compare the importance of the characteristics.
+Use Auto regressive models (ARMA) for time series data.
+Regression problem: Indicator value (x) vs Actual earnings (y)
+Could estimate the variance of the price.
+Could use RNN and LSTMs.
+Could make decision trees for each of the companies the company buys from and run Random Forests.
+Reference the original ML algorithm. Don't go into too much detail. Explain the limitations of the model if there are any.
+Justify your feature choices using previous work and earnings reports.
+Calculate the covariance and p-value to check if the results are significant.
+We will have online meetings during Easter.
