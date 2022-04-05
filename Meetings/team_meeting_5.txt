@@ -1,1 +1,9 @@
-Meet twice a week?
+Look at the percent changes with different stocks to account for factors like inflation.
+Metrics we could use:
+ - Correlation coefficient
+ - Pearson Correlation
+ - Spearman's Correlation
+
+Work on building a Hidden Markov Model.
+Look into the complexity of RNNs.
+Meet again on Friday.

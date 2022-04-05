@@ -1,0 +1,17 @@
+Look at the delta for financial data. Prices can go up due to inflation and calculating the difference gives a better picture of the relationships.
+Use ARIMA with a Hidden Markov Model. The objective is to learn what component affects the EBITDA given the observations we have. The input would be the latent variables.
+Could use an RNN, LSTM. (areas of active research, ARIMA is simpler)
+Form a hidden model from the other variables and use ARIMA to forecast. 
+Each feature is a Z value for the hidden model. 
+EBITDA available every 3 months and we want to predict its value using things we have everyday like SPX500, etc.
+EBITDA is the hidden state, the other variables are observable.
+Data is sparse, which makes it difficult to make a reliable model and test it thoroughly. (possible shortcoming)
+Solution is non-deterministic.
+Look at other correlation metrics like TLCC.
+Regarding hyperparameter tuning: 
+ - The biggest ones are the learning rate and the number of activation layers. 
+ - Look at the default parameters in the LSTM paper. 
+ - Look at pytorch-forecasting and https://colah.github.io/posts/2015-08-Understanding-LSTMs/. 
+Perform cross-validation. This is key since we could overfit. Forecasting is not the main goal.
+Start off with RNNs.
+Datasets provided initially are enough to get a decent report. Don't worry too much about getting more data. The point is to work out what data is going to be key. Talk about what's important from what we have.
