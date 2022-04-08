@@ -19,6 +19,12 @@ def Inflation_Unemployment_Wrangler(df):
     df = df.reset_index(drop = True)
     return df, date_err
 
+def Unemployment_Wrangler(df):
+    df.set_index('Date', inplace=True)
+    df.index = pd.to_datetime(df.index, format='%d/%m/%Y')
+    df = df.apply(pd.to_numeric)
+    return df
+
 def F3Metl_Comp_Wrangler(data):
     # Delete the first row (full of null values)
     df = data.drop(labels=0)
