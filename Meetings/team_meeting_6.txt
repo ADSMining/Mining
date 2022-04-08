@@ -1,0 +1,12 @@
+Looked at examples of HMMs and LSTMs.
+
+Seth - Correlation measures (like Pearson Correlation, Spearman's Correlation)
+Malak - PCA
+Seif - Write the introduction and data exploration sections of the report
+Luke - ARIMA
+Srdjan - LSTM
+Aadith - HMM
+
+Useful links
+HMMs: https://rubikscode.net/2021/09/06/stock-price-prediction-using-hidden-markov-model/
+LSTMs: https://analyticsindiamag.com/how-to-do-multivariate-time-series-forecasting-using-lstm/
