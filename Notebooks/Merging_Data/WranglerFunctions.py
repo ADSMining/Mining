@@ -190,3 +190,24 @@ def F3METL_Wrangler(original_data):
 
     return df
 
+def BCOMIN_Wrangler(raw_data):
+    clean_data = raw_data.drop(labels=0)
+
+    # Dates should be used to index the dataset
+    clean_data.rename(columns={'Unnamed: 0': 'Dates'}, inplace=True)
+    #clean_data.set_index('Dates', inplace=True)
+
+    #clean_data = clean_data.drop(labels='Dates')
+    clean_data.rename(columns={'BCOMIN Index' : 'PX_OPEN', 
+                               'Unnamed: 2': 'PX_HIGH', 
+                               'Unnamed: 3':'PX_LOW', 
+                               'Unnamed: 4' :'PX_LAST'}, inplace=True)
+    clean_data = clean_data.iloc[2: , :] #Remove first 2 error lines
+    clean_data.reset_index(drop=True, inplace=True)
+    for i in range(len(clean_data)):
+        clean_data["Dates"][i] = datetime.strptime(clean_data["Dates"][i], "%d/%m/%Y") #Puts dates into TimeStamp format
+    clean_data.set_index('Dates')
+    return clean_data
+    
+    
+
