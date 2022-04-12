@@ -207,6 +207,8 @@ def BCOMIN_Wrangler(raw_data):
     for i in range(len(clean_data)):
         clean_data["Dates"][i] = datetime.strptime(clean_data["Dates"][i], "%d/%m/%Y") #Puts dates into TimeStamp format
     clean_data.set_index('Dates')
+    
+    
     return clean_data
     
     
