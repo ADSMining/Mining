@@ -212,4 +212,158 @@ def BCOMIN_Wrangler(raw_data):
     return clean_data
     
     
+def test_rev_dataset(df):
+    for row in df.iterrows():
+        print(sum(row[1].values) - row[1].values[0])
+        # ADD SMALL MARGIN OF ERROR - SOME DATA IS NOT COMPLETE IN BLOOMBERG - ONLY EVR HAS SOME SMALL ERROR SO FAR
+        assert(sum(row[1].values) < row[1].values[0]*2 + 100)
+        assert(sum(row[1].values) > row[1].values[0]*2 - 100)
+        
+    print("Dataset contains all values for revenue by country")
+    
+def Geo_Wrangler(df, start_str, end_str):
+    #Setting columns as the dates
+    df.columns = df.loc[3].values
+    #Getting rid of spaces in front of string
+    df['12 Months Ending'] = df['12 Months Ending'].str.strip()
+    #Removing nan columns
+    df = df.loc[:, df.columns.notna()]
+    
+    # Removing unneccessary rows
+    df = df.drop([0, 1, 2, 3], axis = 0)
+    df = df.reset_index(drop = True)
+    
+    # Get revenue index
+    rev_idx = df['12 Months Ending'][df['12 Months Ending'] == start_str].index[0]
+    end_idx = df['12 Months Ending'][df['12 Months Ending'] == end_str].index[0]
+    
+    # Getting rid of ? and replacing as nan
+    df = df.replace('?', np.nan)
+    
+    # Some float values have commas separating thousands - creates problems when converting to float
+    df = df.replace(',','', regex=True)
+    
+    # Putting dates as rows now
+    df = df.T
+    
+    # Columns as countries
+    df.columns = df.loc['12 Months Ending']
+    
+    # Only selecting relevant columns
+    df = df.iloc[:, rev_idx : end_idx]
+    
+    df = df.drop(['12 Months Ending'], axis = 0)
+    
+    # Converting values to float
+    for column in df.columns:
+        df[column] = df[column].astype(float)    
+                
+    # Missing data as 0.0 - not 100% necessary
+    df = df.replace(np.nan, 0.0)
+    
+    # Date as datetime format
+    df = df.reset_index()
+    df = df.rename(columns = {"index" : "Date"})
+    
+    print(wf.format_date(df, 'Date', '%m/%d/%Y'))
+    df.index = df['Date']
+    df = df.drop('Date', axis = 1)
+    
+    # Only using data from 2010    
+    df = df[df.index > '2010-01-01']
+    
+    # Following if statements are to remove double counting - in Bloomberg we had North America e.g. and then USA and Canada as children
+    # When converted to csv both North America is counted and USA and Canada, where as we only want a single instance
+    # Also converting Others to correct continent
+    if ('North America' in df.columns):
+        if 'United States' in df.columns:
+            if 'Canada' in df.columns:
+                df = df.drop(['North America'], axis = 1)
+                
+    if ('Americas' in df.columns):
+        if 'USA' in df.columns:
+            if 'Mexico' in df.columns:
+                df = df.drop(['Americas'], axis = 1)
+                index_no = df.columns.get_loc('Mexico')
+                column_names = df.columns.values
+                column_names[index_no + 1] = "Other countries in Americas"
+                df.columns = column_names
+    
+    if ('Europe' in df.columns):
+        if 'Germany' in df.columns:
+            df = df.drop(['Europe'], axis = 1)
+            if 'Turkey' in df.columns:
+                index_no = df.columns.get_loc('Turkey')
+                column_names = df.columns.values
+                column_names[index_no + 1] = "Other countries in Europe"
+                df.columns = column_names
+            
+    if ('Asia' in df.columns):
+        if 'Japan' in df.columns:
+            df = df.drop(['Asia'], axis = 1)
+            if 'Mongolia' in df.columns:
+                index_no = df.columns.get_loc('Mongolia')
+                column_names = df.columns.values
+                column_names[index_no + 1] = "Other countries in Asia"
+                df.columns = column_names
+    
+    if ('Africa & The Rest Of The World' in df.columns):
+        if 'Africa' in df.columns:
+            df = df.drop(['Africa & The Rest Of The World'], axis = 1)
+            df = df.drop(['Africa'], axis = 1)
+            
+            if 'Egypt' in df.columns:
+                index_no = df.columns.get_loc('Egypt')
+                column_names = df.columns.values
+                column_names[index_no + 1] = "Other countries in Africa"
+                df.columns = column_names
+    
+    if ('CIS' in df.columns):
+        if 'CIS (Excluding Russia)' in df.columns:
+            if 'Canada' in df.columns:
+                df = df.drop(['CIS'], axis = 1)
+                df = df.drop(['CIS (Excluding Russia)'], axis = 1)
+                
+                if 'Uzbekistan' in df.columns:
+                    index_no = df.columns.get_loc('Uzbekistan')
+                    column_names = df.columns.values
+                    column_names[index_no + 1] = "Other countries in CIS"
+                    df.columns = column_names
+                
+                
+    if ('Latin America' in df.columns):
+        if 'Chile' in df.columns:
+            df = df.drop(['Latin America'], axis = 1)
+            
+    # Removing columns with no meaningful data
+    for column in df.columns:
+        unique_values = df[column].unique()
+        if len(unique_values) == 1:
+            if unique_values[0] == 0.0:
+                df = df.drop([column], axis = 1)
+    
+    # Removing rows with no data
+    for row in df.iterrows():
+        unique_values = np.unique(row[1].values)
+        if len(unique_values) == 1:
+            if unique_values[0] == 0.0:
+                df = df.drop([row[0]], axis = 0)
+                
+
+    return df
+    
+def gdpWrangler(raw_data):
+    df = pd.DataFrame([], columns = ["Date", "GDP growth"])
+    df["Date"] = raw_data.loc[7]
+    df["GDP growth"] = raw_data.loc[8]
+    df = df.reset_index(drop = True)
+    df = df.drop([0, 1, 2], axis = 0)
+    df = df.iloc[::-1]
+    df = df.replace("--", np.nan)
+    df = df.dropna()
+    df = df.reset_index(drop = True)
+    df["GDP growth"] = df['GDP growth'].astype(float)
+    df["Date"] = pd.to_datetime(df["Date"].str.replace(r'(Q\d) (\d+)', r'\2-\1'), errors='coerce')
+    
+    return df
 
