@@ -1,0 +1,19 @@
+Normalise the prices. Take the percentage change of the prices instead of the raw data.
+Look at covariance for seasonal time periods. Analyse features for each window to remove seasonal patterns like rise/fall during Christmas. Change the window size and look at the correlation.
+Make use of t-tests to ensure that the data chosen is correct.
+P value for significance.
+
+Report
+The report should principally be on feature identification. Use covariance, regression, and PCA to justify your choices and different sliding window sizes to analyse the performance.
+Write about Black Swan events like 2008, COVID-19 pandemic, oil prices, and the Ukraine invasion when visualising the trends.
+Mention that you can even forecast using the models.
+Mention why we didn't include operating costs in the report. Also mention that we need a lot more data to create a good forecasting model.
+Write about future work and ongoing research in the report.
+
+LSTMs
+Batch size can't be too high. Just make it so that it doesn't run out of memory.
+Set epoch to 100 or so.
+
+PCA
+Percentage difference and then normalise them to bound it between 0 and 1.
+Use the standard normaliser in scikit learn.

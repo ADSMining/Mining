@@ -1,0 +1,4 @@
+Complete the data exploration section of the report with visualisations.
+Make an LSTM model with all of the features. Look into t-tests.
+Redo the PCA with percentage differences.
+Make an HMM with features with strongest correlation and one with all the features.
