@@ -108,6 +108,32 @@ def CostsWrangler(df, start_str):
     
     return df
 
+def ShippingWrangler(df):
+    Freight_wrangle1 =df.drop(columns=["Unnamed: 1","Unnamed: 2","Unnamed: 3","Unnamed: 4"])
+    Freight_wrangle2 = Freight_wrangle1.T
+    Freight_wrangle2.columns =[str(Freight_wrangle2[0][0]), str(Freight_wrangle2[1][0])]
+    Freight_wrangle2.drop(["Unnamed: 0"], axis=0,inplace=True)
+    Freight_wrangle2['Container Rates (USD per FEU) - WCI Freight Rate Composite'] = Freight_wrangle2['Container Rates (USD per FEU) - WCI Freight Rate Composite'].astype(float)
+    Freight_wrangle2 = Freight_wrangle2[Freight_wrangle2['Container Rates (USD per FEU) - WCI Freight Rate Composite']!=0]
+    #convert quarters to Data Time format
+    Freight_wrangle2["Date"] = pd.to_datetime(Freight_wrangle2["Description"].str.replace(r'(\d+) (Q\d)', r'\1-\2'), errors='coerce')
+    Freight_wrangle2 = Freight_wrangle2.drop(columns='Description')
+    #Reorder columns
+    cols = Freight_wrangle2.columns.tolist()
+    cols = cols[1:] + cols[0:1] 
+    cols
+    Freight_wrangle2 = Freight_wrangle2[cols]
+    #Reset index
+    Freight_wrangle2.set_index(np.arange(1,(len(Freight_wrangle2['Date'])+1)))
+
+    df = Freight_wrangle2
+    df.columns = ["Date", "Shipping costs"]
+    
+    df = df.iloc[::-1]
+    df = df.reset_index(drop = True)
+    
+    return df
+
 def format_commodity_data_of_form_DATES_AND_PX_LAST(filename):  #AKA COMMODITY DATASET WRANGLERS
     location = '../../Notebooks/Datasets/Commodity_price_dataset/' + filename + '.csv'
     df = pd.read_csv(location   , index_col=False, names=["Dates", "PX_LAST"])
