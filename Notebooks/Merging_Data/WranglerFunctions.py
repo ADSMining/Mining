@@ -108,7 +108,7 @@ def CostsWrangler(df, start_str):
     
     return df
 
-def format_commodity_data_of_form_DATES_AND_PX_LAST(filename):
+def format_commodity_data_of_form_DATES_AND_PX_LAST(filename):  #AKA COMMODITY DATASET WRANGLERS
     location = '../../Notebooks/Datasets/Commodity_price_dataset/' + filename + '.csv'
     df = pd.read_csv(location   , index_col=False, names=["Dates", "PX_LAST"])
     df.dropna(inplace=True)
