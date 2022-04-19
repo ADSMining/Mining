@@ -1,0 +1,17 @@
+Modelling
+ - Do not use fractional change for inflation since it's already % increase. Make sure everything is bounded between the same values.
+ - Show best features for the HMM.
+ - Remove datasets that have no correlation and run model again.
+ - Correlation is showing pure linearity.
+ - HMM could do as well as the LSTM but HMM is difficult to scale. When there are a lot of nodes it's like a neural network without gradient descent which is expensive and hard to run.
+ - Plot graphs and show how important the features are. Remove features we think are important and show the forecast error.
+ - Make sure there is no double counting in the LSTM model.
+
+Report
+ - Data collection and reasoning.
+ - Feature identification and description of important features.
+ - Increase complexity of models gradually.
+ - OHLC with Black Swan events.
+ - Use S&P to show the 2008 recession and other indexes to support the argument that this was not the only feature affected.
+
+Send report before submission for feedback.

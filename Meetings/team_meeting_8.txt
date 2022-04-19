@@ -1,0 +1,9 @@
+Report
+ - OHLC FTSE250 visulisation in the exploration section.
+ - Black Swan events in OHLC and other indexes to show that this is not the only index affected.
+ - Reasons for discarding data.
+ - Remove climate change and resource nationalism sections.
+ - Use heatmap instead of correlation matrix.
+ - Fewer graphs in the report.
+ - Mention that the PCA visualisations are not informative.
+ - Possibly plot bar graph showing error of model using each feature.
