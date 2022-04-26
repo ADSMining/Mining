@@ -1,0 +1,3 @@
+Grid on graphs for report.
+Mention that the p-value measures the level of significance.
+If removing the feature that has a linear correlation has an impact in the non-linear model results (LSTM) then we can hypothesise a non-linear relationship.

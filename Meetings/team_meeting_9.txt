@@ -1,0 +1,4 @@
+Grid for graphs.
+Events on OHLC.
+Modelling with 13 features.
+Start report next week.
