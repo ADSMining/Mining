@@ -1,0 +1,28 @@
+Refer to the annotated report for more comments.
+
+Writing needs work.
+Concise introduction.
+What is EBITDA? Why is it useful to solve this problem?
+Reference each section in advance and explain what we do.
+Replace index with financial index.
+Why is our approach different and important?
+Research instead of researched in flowchart. It's to explain how future experiments can do it.
+
+Elaborate/improve feature justification. All help with earnings, but why?
+Include how dense the data is for each dataest.
+Why do I care about each dataset? The UK economy is a surrogate for the global economy as it is a very large economy.
+Reduce the number of significant figures in the correlation table.
+
+Describe each model and why we're using it.
+Models section should just explain why we chose the model and how it works.
+Validation and what the model did in the results section.
+Add grid. Remove the title since the caption already describes it. Add EBITDA units.
+Why is the prediction out of phase?
+
+Evaluate analysis process.
+Limitation and solutions.
+
+Nominate an editor who goes through all of it and makes sure everything fits together.
+
+
+
